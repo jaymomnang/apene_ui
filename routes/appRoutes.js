@@ -1,13 +1,13 @@
 'use strict';
 module.exports = function(app) {
-  var tasks = require('../controllers/TasksController');
+  var invoices = require('../controllers/InvoicesController');
   var user = require('../controllers/userController');
   var login = require('../controllers/LoginController');
-  var course = require('../controllers/CoursesController');
-  var submission = require('../controllers/SubmissionController');
-  var perf = require('../controllers/PerformanceController');
+  var customers = require('../controllers/CustomersController');
+  var products = require('../controllers/ProductsController');
+  var receipts = require('../controllers/ReceiptsController');
   var reports = require('../controllers/ReportsController');
-  var attendance = require('../controllers/AttendanceController');
+  var quotes = require('../controllers/QuotesController');
 
   global.monthNames = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE",
                     "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
@@ -27,22 +27,24 @@ module.exports = function(app) {
     .get(login.getCurrentUser)
     .post(login.authenticate);
 
-  // Tasks Routes
-  app.route('/tasks')
-    .get(tasks.list_all_tasks)
-    .post(tasks.add_task)
-    .put(tasks.update_task)
-    .delete(tasks.delete_task);
+  // Invoices Routes
+  app.route('/invoices')
+    .get(invoices.list_all_invoices)
+    .post(invoices.add_invoice)
+    .put(invoices.update_invoice)
+    .delete(invoices.delete_invoice);
 
-  app.route('/tasks/:taskId')
-    .get(tasks.get_task);
+  app.route('/invoices/:invoice_id')
+    .get(invoices.get_invoice);
 
-  // Performance Routes
-  app.route('/home')
-    .get(perf.show_summary)
-    .post(perf.get_detail);
-  app.route('/home/:module')
-    .get(perf.get_performance);
+  // Quotes Routes
+  app.route('/quotes')
+    .get(quotes.list_all_quotes)
+    .post(quotes.add_quote)
+    .put(quotes.update_quote)
+    .delete(quotes.delete_quote);
+  app.route('/quotes/:quote_id')
+    .get(quotes.get_quote);
 
   // Users Routes
   app.route('/manage_usr')
@@ -53,35 +55,37 @@ module.exports = function(app) {
     .put(user.update_user_prof)
     .delete(user.delete_user);
 
-  // Courses Routes
-  app.route('/courses')
-    .get(course.list_all_courses)
-    .post(course.create_course);
+  // Receipts Routes
+  app.route('/receipts')
+    .get(receipts.list_all_receipts)
+    .post(receipts.add_receipt)
+    .put(receipts.update_receipt)
+    .delete(receipts.delete_receipt);
 
-  app.route('/courses/:course')
-    .get(course.get_course);
+  app.route('/receipts/:receipt_id')
+    .get(receipts.get_receipt);
 
-  // Submissions Routes
-  app.route('/submissions')
-    .get(submission.list_all_submissions)
-    .post(submission.subtmit_task);
+  // Customers Routes
+  app.route('/customers')
+    .get(customers.list_all_customers)
+    .post(customers.add_customer)
+    .put(customers.update_customer)
+    .delete(customers.delete_customer);
 
-  app.route('/submissions/:subId')
-    .get(submission.get_submitted_task)
-    .put(submission.update_submission)
-    .delete(submission.delete_submission);
+  app.route('/customers/:customer_id')
+    .get(customers.get_customer);
+  
+  // Products Routes
+  app.route('/products')
+    .get(products.list_all_products)
+    .post(products.add_product)
+    .put(products.update_product)
+    .delete(products.delete_product);
 
-  // Attendance Routes
-  app.route('/attendance')
-    .get(attendance.list_all_attendance)
-    .post(attendance.add_attendance);
-
-  app.route('/attendance/:email/:att_id')
-    .get(attendance.get_attendance)
-    .put(attendance.update_attendance)
-    .delete(attendance.delete_attendance);
-
-  // Attendance Report Routes
+  app.route('/products/:product_id')
+    .get(products.get_product);
+  
+    // Attendance Report Routes
   app.route('/reports')
     .get(reports.print_attendance);
 

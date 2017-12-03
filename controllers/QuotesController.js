@@ -1,7 +1,7 @@
 'use strict';
 
 //load page defaults
-exports.list_all_tasks = function(req, res) {
+exports.list_all_quotes = function(req, res) {
 
   console.log(req.session.email);
   if (req.session.email == undefined){
@@ -9,100 +9,78 @@ exports.list_all_tasks = function(req, res) {
   }
   else{
 
-    var auth_url = mc_api + "tasks/";
+    var auth_url = mc_api + "quote/";
     request(auth_url, function (error, response, body) {
 
       if (error) return error;
       var data = JSON.parse(body);
-      req.session.tasks = data;
+      req.session.quotes = data;
 
-      //get courses data
-      var _url1 = mc_api + "course/";
-      request(_url1, function (error, response, body) {
-        var data1 = JSON.parse(body);
-        if (error) return error;
-        req.session.courses = data1;
-
-        ///get student data
-        var _url2 = mc_api + "login/";
-        request(_url2, function (error, response, body) {
-          var data2 = JSON.parse(body);
-          if (error) return error;
-          req.session.users = data2;
-
-          var token = req.session.token;
-          var arr = req.session;
-          res.render("tasks", {menus, token, arr});
-        });
-
-      });
+      var ui_data = req.session;
+      res.render("quotes", {menus, ui_data});
 
     });
-
   }
-
-
 };
 
 //post page data
-exports.add_task = function(req, res) {
+exports.add_quote = function(req, res) {
 
   if (req.session.email == undefined){
     res.render("login");
   }else{
-    var url_partial = "tasks/";
+    var url_partial = "quote/";
     var auth_url = mc_api + url_partial;
     request.post({headers: {'content-type': 'application/x-www-form-urlencoded'}, url: auth_url, form:req.body }, function(error, response, body){
-        req.session.tasks = JSON.parse(body);
-        var msg = 'Error creating task, Please contact your administrator';
+        req.session.quote = JSON.parse(body);
+        var msg = 'Error creating quote, Please contact your administrator';
         var failed = true;
         if (!error){
             failed = false;
-            msg = 'successfully created task';
-            var token = req.session.tasks;
-            var arr = req.session;
-            res.render('tasks', {menus, token, arr, failed, msg});
+            msg = 'quote successfully created';
+            var ui_data = req.session;
+            res.render('quote', {menus, ui_data, failed, msg});
         }
     });
   }
 };
 
 
-exports.get_task = function(req, res) {
+exports.get_quote = function(req, res) {
 
   if (req.session.email == undefined){
     res.render("login");
   }else{
-    var url_partial = "tasks/" + req.params.taskId;
+    var url_partial = "quote/" + req.params.quote_id;
     var auth_url = mc_api + url_partial;
 
     request(auth_url, function (error, response, body) {
       var data = JSON.parse(body);
       //prepare display data
       //TODO: load the data needed here.
-      res.render(url_partial, {arr, menus, data});
+      res.render(url_partial, {menus, data});
     });
   }
 
 };
 
-exports.update_task = function(req, res) {
+exports.update_quote = function(req, res) {
 
   if (req.session.email == undefined){
     res.render("login");
   }else{
-    var url_partial = "tasks/" + req.params.taskId;
+    var url_partial = "quote/" + req.params.taskId;
     var auth_url = mc_api + url_partial;
     req.body.isActive = false;
     request.put({headers: {'content-type': 'application/x-www-form-urlencoded'}, url: auth_url, form:req.body }, function (error, response, body) {
       var data = JSON.parse(body);
       //prepare display data
-      res.render(url_partial, arr);
+      res.render(url_partial, data);
     });
   }
 };
 
-exports.delete_task = function(req, res) {
+exports.delete_quote = function(req, res) {
   //TODO: write a process for deleting a task
   if (req.session.email == undefined){
     res.render("login");
