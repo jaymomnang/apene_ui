@@ -1,86 +1,30 @@
 var express = require('express'),
     app = express(),
+    port = process.env.PORT || 3200,
     engines = require('consolidate'),
-    MongoClient = require('mongodb').MongoClient,
-    bodyParser = require('body-parser'),
+    session = require('express-session'),
+    routes = require('./routes/appRoutes'),
     assert = require('assert');
 
+global.bodyParser = require('body-parser');
+global.request = require('request');
+global.mc_api = "http://localhost:3100/";
+global.urlpath = "http://localhost:3200/";
 
+
+//initialize bodyParser and errorHandler
 app.engine('html', engines.nunjucks);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/resources'));
+app.use(bodyParser.json());
+app.use(session({secret: 'as465asdwqwdzcafd56a5df45a46df'}));
+//app.use(errorHandler);
 
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-//MongoClient.connect('mongodb://localhost:27017/video', function(err, db) {
+routes(app);
 
-//    assert.equal(null, err);
-//    console.log("Successfully connected to MongoDB.");
-
-//});
-
-
-    //Handler for internal server errors
-    function errorHandler(err, req, res){
-      console.error(err.message);
-      console.error(err.stack);
-      if (res.status == 500){
-        res.render('errtemplate', {error: err});
-      }else if(res.status == 404) {
-        res.render('404', {error: err});
-      }
-
-    }
-
-    app.get('/', function(req, res){
-      res.render("index", {'username': 'Julius Momnang', 'year': 2017, 'month': 'JUNE'});
-    });
-
-    app.get('/invoices', function(req, res){
-      res.render("data-table", {'username': 'Julius Momnang', 'year': 2017, 'month': 'JUNE'});
-    });
-
-    app.get('/profile', function(req, res){
-      res.render("profile", {'fruits': ['apple','orange','banana','peach','passion']});
-    });
-
-    app.get('/fontawesome', function(req, res){
-      res.render("fontawesome", {'fruits': ['apple','orange','banana','peach','passion']});
-    });
-
-    app.get('/basic-table', function(req, res){
-      res.render("basic-table", {'fruits': ['apple','orange','banana','peach','passion']});
-    });
-
-    app.get('/map-google', function(req, res){
-      res.render("map-google", {'fruits': ['apple','orange','banana','peach','passion']});
-    });
-
-    app.get('/404', function(req, res){
-      res.render("404", {'fruits': ['apple','orange','banana','peach','passion']});
-    });
-    //app.get('/:name', function(req, res){
-    //    var name = req.params.name;
-    //    var getvar1 = req.query.getvar1;
-    //    var getvar2 = req.query.getvar2;
-    //    res.render("hello", {name: name, getvar1: getvar1, getvar2:getvar2});
-    //});
-
-    app.post('/favfruit', function(req, res){
-      var fav = req.body.fruit;
-      if (typeof fav == 'undefined'){
-        next(Error('Please choose a fruit'));
-      }else{
-        res.send('Your favourite fruit is ' + fav);
-      }
-    });
-
-
-
-  app.use(errorHandler);
-
-    var server = app.listen(3000, function() {
-        var port = server.address().port;
-        console.log('Express server listening on port %s.', port);
-    });
+app.listen(port);
+console.log('Apene Accounting server listening on port ' + port);
