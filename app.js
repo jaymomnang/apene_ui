@@ -1,6 +1,6 @@
 var express = require('express'),
     app = express(),
-    port = process.env.PORT || 3200,
+    port = process.env.PORT || 1100,
     engines = require('consolidate'),
     session = require('express-session'),
     routes = require('./routes/appRoutes'),
@@ -8,8 +8,8 @@ var express = require('express'),
 
 global.bodyParser = require('body-parser');
 global.request = require('request');
-global.mc_api = "http://localhost:3100/";
-global.urlpath = "http://localhost:3200/";
+global.mc_api = "http://localhost:1000/";
+global.urlpath = "http://localhost:1100/";
 
 
 //initialize bodyParser and errorHandler
