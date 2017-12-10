@@ -13,21 +13,28 @@ exports.getCurrentUser = function(req, res) {
 exports.authenticate = function(req, res) {
   var auth_url = mc_api + "login/"+ req.body.email + "/" + req.body.pwd;
   request(auth_url, function (error, response, body) {
-    var info = JSON.parse(body);
-    if (info.length != 1){
-      res.render("login", {statusCode: response && response.statusCode, loggedIn: false});
-    }
-    if(info.length == 1){
-      //prepare display data
-      createSession(req, info)
-      var arr = req.session;
-      //prepare attendance data
-      var att_data = {email: arr.email, fullname: arr.username, year: arr.token.year, month: arr.token.month,
-                      day: arr.token.day, time: arr.token.time, att_id: arr.token.nxt_att_Id, gradepoint: arr.token.hour};
+    
+    var info;
 
-      logAttendance(req, att_data);
-      res.redirect(urlpath + "tasks");
-    }
+    if(body == undefined){
+      return res.render("login", {statusCode: response && response.statusCode, loggedIn: false});
+      console.log(body);
+    }else{
+      info = JSON.parse(body);
+      if(info.length == 1){
+        //prepare display data
+        createSession(req, info)
+        var arr = req.session;
+        //prepare attendance data
+        var att_data = {email: arr.email, fullname: arr.username, year: arr.token.year, month: arr.token.month,
+                        day: arr.token.day, time: arr.token.time, att_id: arr.token.nxt_att_Id, gradepoint: arr.token.hour};
+  
+        logAttendance(req, att_data);
+        res.redirect(urlpath + "tasks");
+      }
+    }    
+    
+    
   });
 };
 
