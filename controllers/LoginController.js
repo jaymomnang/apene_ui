@@ -7,7 +7,7 @@ exports.getCurrentUser = function(req, res) {
     //  res.render("login");
     //}
     req.session.destroy();
-    res.render("dashboard");
+    res.render("login");
 };
 
 exports.authenticate = function(req, res) {
