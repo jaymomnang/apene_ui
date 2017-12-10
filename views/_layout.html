@@ -1,16 +1,4 @@
-<!DOCTYPE html><!-- 
-Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 4
-Version: 5.0
-Author: KeenThemes
-Website: http://www.keenthemes.com/
-Contact: support@keenthemes.com
-Follow: www.twitter.com/keenthemes
-Dribbble: www.dribbble.com/keenthemes
-Like: www.facebook.com/keenthemes
-Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
-Renew Support: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
-License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
--->
+<!DOCTYPE html>
 <html lang="en" >
 	<!-- begin::Head -->
 	<head>
@@ -251,9 +239,17 @@ License: You must have a valid license purchased only from themeforest(the above
 					<div id="m_ver_menu" class="m-aside-menu  m-aside-menu--skin-dark m-aside-menu--submenu-skin-dark "	data-menu-vertical="true"
 		 				data-menu-scrollable="false" data-menu-dropdown-timeout="500">
 						<ul class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow ">
+							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
+								<a  href="#" class="m-menu__link">
+									<i class="m-menu__link-icon flaticon-dashboard"></i>
+									<span class="m-menu__link-text">
+										Dashboard
+									</span>									
+								</a>								
+							</li>
 							<li class="m-menu__item" aria-haspopup="true"  data-menu-submenu-toggle="hover">
 								<a  href="#" class="m-menu__link m-menu__toggle">
-									<i class="m-menu__link-icon flaticon-layers"></i>
+									<i class="m-menu__link-icon flaticon-notes"></i>
 									<span class="m-menu__link-text">
 										Billing
 									</span>
@@ -262,60 +258,63 @@ License: You must have a valid license purchased only from themeforest(the above
 								<div class="m-menu__submenu">
 									<span class="m-menu__arrow"></span>
 									<ul class="m-menu__subnav">
-										<li class="m-menu__item  m-menu__item--parent" aria-haspopup="true" >
-											<a  href="#" class="m-menu__link ">
-												<span class="m-menu__link-text">
-													Billing
-												</span>
-											</a>
-										</li>
 										<li class="m-menu__item " aria-haspopup="true" >
-											<a  href="components/base/state.html" class="m-menu__link ">
+											<a  href="invoice" class="m-menu__link ">
 												<i class="m-menu__link-bullet m-menu__link-bullet--dot">
 													<span></span>
 												</i>
 												<span class="m-menu__link-text">
-													State Colors
+													New Invoice
 												</span>
 											</a>
 										</li>
 										<li class="m-menu__item " aria-haspopup="true" >
-											<a  href="components/base/typography.html" class="m-menu__link ">
+											<a  href="invoicelist" class="m-menu__link ">
 												<i class="m-menu__link-bullet m-menu__link-bullet--dot">
 													<span></span>
 												</i>
 												<span class="m-menu__link-text">
-													Typography
+													View Invoices
 												</span>
 											</a>
 										</li>
 										<li class="m-menu__item " aria-haspopup="true" >
-											<a  href="components/base/stack.html" class="m-menu__link ">
+											<a  href="invoicelist" class="m-menu__link ">
 												<i class="m-menu__link-bullet m-menu__link-bullet--dot">
 													<span></span>
 												</i>
 												<span class="m-menu__link-text">
-													Stack
+													Unpaid Invoices
 												</span>
 											</a>
 										</li>
 										<li class="m-menu__item " aria-haspopup="true" >
-											<a  href="components/base/tables.html" class="m-menu__link ">
+											<a  href="quote" class="m-menu__link ">
 												<i class="m-menu__link-bullet m-menu__link-bullet--dot">
 													<span></span>
 												</i>
 												<span class="m-menu__link-text">
-													Tables
+													New Quotation
 												</span>
 											</a>
 										</li>
 										<li class="m-menu__item " aria-haspopup="true" >
-											<a  href="components/base/progress.html" class="m-menu__link ">
+											<a  href="quotations" class="m-menu__link ">
 												<i class="m-menu__link-bullet m-menu__link-bullet--dot">
 													<span></span>
 												</i>
 												<span class="m-menu__link-text">
-													Progress
+													Quotations
+												</span>
+											</a>
+										</li>
+										<li class="m-menu__item " aria-haspopup="true" >
+											<a  href="products" class="m-menu__link ">
+												<i class="m-menu__link-bullet m-menu__link-bullet--dot">
+													<span></span>
+												</i>
+												<span class="m-menu__link-text">
+													Products
 												</span>
 											</a>
 										</li>										
@@ -324,7 +323,7 @@ License: You must have a valid license purchased only from themeforest(the above
 							</li>
 							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
 								<a  href="#" class="m-menu__link m-menu__toggle">
-									<i class="m-menu__link-icon flaticon-share"></i>
+									<i class="m-menu__link-icon flaticon-coins"></i>
 									<span class="m-menu__link-text">
 										Payments
 									</span>
@@ -334,22 +333,22 @@ License: You must have a valid license purchased only from themeforest(the above
 									<span class="m-menu__arrow"></span>
 									<ul class="m-menu__subnav">
 										<li class="m-menu__item " aria-haspopup="true" >
-											<a  href="components/icons/flaticon.html" class="m-menu__link ">
+											<a  href="receipt" class="m-menu__link ">
 												<i class="m-menu__link-bullet m-menu__link-bullet--dot">
 													<span></span>
 												</i>
 												<span class="m-menu__link-text">
-													Flaticon
+													New Receipt
 												</span>
 											</a>
 										</li>
 										<li class="m-menu__item " aria-haspopup="true" >
-											<a  href="components/icons/fontawesome.html" class="m-menu__link ">
+											<a  href="receipts" class="m-menu__link ">
 												<i class="m-menu__link-bullet m-menu__link-bullet--dot">
 													<span></span>
 												</i>
 												<span class="m-menu__link-text">
-													Fontawesome
+													Payment Receipts
 												</span>
 											</a>
 										</li>
@@ -359,26 +358,16 @@ License: You must have a valid license purchased only from themeforest(the above
 													<span></span>
 												</i>
 												<span class="m-menu__link-text">
-													Lineawesome
+													Debtors
 												</span>
 											</a>
-										</li>
-										<li class="m-menu__item " aria-haspopup="true" >
-											<a  href="components/icons/socicons.html" class="m-menu__link ">
-												<i class="m-menu__link-bullet m-menu__link-bullet--dot">
-													<span></span>
-												</i>
-												<span class="m-menu__link-text">
-													Socicons
-												</span>
-											</a>
-										</li>
+										</li>										
 									</ul>
 								</div>
 							</li>
 							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
 								<a  href="#" class="m-menu__link">
-									<i class="m-menu__link-icon flaticon-multimedia-1"></i>
+									<i class="m-menu__link-icon flaticon-folder"></i>
 									<span class="m-menu__link-text">
 										Cashbook
 									</span>									
@@ -386,7 +375,7 @@ License: You must have a valid license purchased only from themeforest(the above
 							</li>
 							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
 								<a  href="#" class="m-menu__link">
-									<i class="m-menu__link-icon flaticon-interface-7"></i>
+									<i class="m-menu__link-icon flaticon-folder-1"></i>
 									<span class="m-menu__link-text">
 										Journals
 									</span>
@@ -394,7 +383,7 @@ License: You must have a valid license purchased only from themeforest(the above
 							</li>
 							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
 								<a  href="#" class="m-menu__link m-menu__toggle">
-									<i class="m-menu__link-icon flaticon-tabs"></i>
+									<i class="m-menu__link-icon flaticon-layers"></i>
 									<span class="m-menu__link-text">
 										Cash Advance
 									</span>
@@ -405,6 +394,9 @@ License: You must have a valid license purchased only from themeforest(the above
 									<ul class="m-menu__subnav">
 										<li class="m-menu__item  m-menu__item--parent" aria-haspopup="true" >
 											<a  href="#" class="m-menu__link ">
+												<i class="m-menu__link-bullet m-menu__link-bullet--dot">
+													<span></span>
+												</i>
 												<span class="m-menu__link-text">
 													Cash Advance
 												</span>
@@ -412,6 +404,9 @@ License: You must have a valid license purchased only from themeforest(the above
 										</li>
 										<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
 											<a  href="#" class="m-menu__link">												
+												<i class="m-menu__link-bullet m-menu__link-bullet--dot">
+													<span></span>
+												</i>												
 												<span class="m-menu__link-text">
 													Retirements
 												</span>
@@ -419,6 +414,9 @@ License: You must have a valid license purchased only from themeforest(the above
 										</li>
 										<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
 											<a  href="#" class="m-menu__link">												
+												<i class="m-menu__link-bullet m-menu__link-bullet--dot">
+													<span></span>
+												</i>
 												<span class="m-menu__link-text">
 													Projects
 												</span>
@@ -429,7 +427,7 @@ License: You must have a valid license purchased only from themeforest(the above
 							</li>
 							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
 								<a  href="#" class="m-menu__link m-menu__toggle">
-									<i class="m-menu__link-icon flaticon-interface-1"></i>
+									<i class="m-menu__link-icon flaticon-tabs"></i>
 									<span class="m-menu__link-text">
 										Budgets
 									</span>
@@ -437,7 +435,7 @@ License: You must have a valid license purchased only from themeforest(the above
 							</li>
 							<li class="m-menu__item  m-menu__item--submenu m-menu__item--open m-menu__item--expanded" aria-haspopup="true"  data-menu-submenu-toggle="hover">
 								<a  href="#" class="m-menu__link m-menu__toggle">
-									<i class="m-menu__link-icon flaticon-network"></i>
+									<i class="m-menu__link-icon flaticon-interface-9"></i>
 									<span class="m-menu__link-text">
 										Payroll
 									</span>
@@ -445,7 +443,7 @@ License: You must have a valid license purchased only from themeforest(the above
 							</li>
 							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
 								<a  href="#" class="m-menu__link m-menu__toggle">
-									<i class="m-menu__link-icon flaticon-diagram"></i>
+									<i class="m-menu__link-icon flaticon-user"></i>
 									<span class="m-menu__link-text">
 										Employees
 									</span>
@@ -453,7 +451,7 @@ License: You must have a valid license purchased only from themeforest(the above
 							</li>
 							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
 								<a  href="#" class="m-menu__link m-menu__toggle">
-									<i class="m-menu__link-icon flaticon-placeholder-1"></i>
+									<i class="m-menu__link-icon flaticon-diagram"></i>
 									<span class="m-menu__link-text">
 										Reports
 									</span>
@@ -461,7 +459,7 @@ License: You must have a valid license purchased only from themeforest(the above
 							</li>
 							<li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
 								<a  href="#" class="m-menu__link m-menu__toggle">
-									<i class="m-menu__link-icon flaticon-signs-2"></i>
+									<i class="m-menu__link-icon flaticon-settings"></i>
 									<span class="m-menu__link-text">
 										Settings
 									</span>
@@ -470,15 +468,18 @@ License: You must have a valid license purchased only from themeforest(the above
 								<div class="m-menu__submenu">
 									<span class="m-menu__arrow"></span>
 									<ul class="m-menu__subnav">
-										<li class="m-menu__item  m-menu__item--parent" aria-haspopup="true" >
+										<li class="m-menu__item" aria-haspopup="true" >
 											<a  href="#" class="m-menu__link ">
+												<i class="m-menu__link-bullet m-menu__link-bullet--dot">
+													<span></span>
+												</i>
 												<span class="m-menu__link-text">
 													Utils
 												</span>
 											</a>
 										</li>
 										<li class="m-menu__item " aria-haspopup="true" >
-											<a  href="components/utils/session-timeout.html" class="m-menu__link ">
+											<a  href="coa" class="m-menu__link ">
 												<i class="m-menu__link-bullet m-menu__link-bullet--dot">
 													<span></span>
 												</i>
@@ -488,7 +489,7 @@ License: You must have a valid license purchased only from themeforest(the above
 											</a>
 										</li>
 										<li class="m-menu__item " aria-haspopup="true" >
-											<a  href="components/utils/idle-timer.html" class="m-menu__link ">
+											<a  href="periods" class="m-menu__link ">
 												<i class="m-menu__link-bullet m-menu__link-bullet--dot">
 													<span></span>
 												</i>
