@@ -1,54 +1,53 @@
 'use strict';
 
-exports.getCurrentUser = function(req, res) {
-    //if (arr.loggedIn != false){
-    //  res.redirect(urlpath + "tasks");
-    //}else{
-    //  res.render("login");
-    //}
-    req.session.destroy();
-    res.render("login");
+exports.getCurrentUser = function (req, res) {
+  req.session.destroy();
+  res.render("login");
 };
 
-exports.authenticate = function(req, res) {
-  var auth_url = mc_api + "login/"+ req.body.email + "/" + req.body.pwd;
-  request(auth_url, function (error, response, body) {
-    
-    var info;
+exports.authenticate = function (req, res) {
 
-    if(body == undefined){
-      return res.render("login", {statusCode: response && response.statusCode, loggedIn: false});
-      console.log(body);
-    }else{
-      info = JSON.parse(body);
-      if(info.length == 1){
+  if (req.body._route == "login") {
+    var auth_url = mc_api + "login/" + req.body.email + "/" + req.body.pwd;
+    request(auth_url, function (error, response, body) {
+      
+      var info = JSON.parse(body);
+      if (info.length == 1) {
         //prepare display data
         createSession(req, info)
-        var arr = req.session;
-        //prepare attendance data
-        var att_data = {email: arr.email, fullname: arr.username, year: arr.token.year, month: arr.token.month,
-                        day: arr.token.day, time: arr.token.time, att_id: arr.token.nxt_att_Id, gradepoint: arr.token.hour};
-  
-        logAttendance(req, att_data);
-        res.redirect(urlpath + "tasks");
+        res.redirect(urlpath + "dashboard");
+      } else {
+        req.session.message = "Incorrect username or password";
+        res.render("login");
       }
-    }    
-    
-    
-  });
+
+    });
+  } else {
+
+    //prepare attendance data
+    console.log("create new user account");
+    var data = req.body;
+    console.log(data);
+    createUser(req, data);
+    res.render("login");
+
+  }
+
 };
 
-//log the attendance register for student
-var logAttendance = function(req, data){
-  var auth_url = mc_api + "attendance/";
-  request.post({headers: {'content-type': 'application/x-www-form-urlencoded'}, url: auth_url, form:data }, function(error, response, body){
+//create a new user account
+var createUser = function (req, data) {
+  var auth_url = mc_api + "users/";
+  request.post({ headers: { 'content-type': 'application/x-www-form-urlencoded' }, url: auth_url, form: data }, function (error, response, body) {
     var data = JSON.parse(body);
-    req.session.token.attendanceLogged = true;
-    req.session.token.attendance = data;
+    console.log(data);
+    if (data.email != '') {
+      req.session.message = "User account created successfully";
+    }
   });
 };
 
-var createSession = function(req, info){
+var createSession = function (req, info) {
 
   req.session.email = info[0].email;
   req.session.username = info[0].firstname + " " + info[0].lastname;

@@ -31,7 +31,7 @@
 	<body class="m--skin- m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default"  >
 		<!-- begin:: Page -->
 		<div class="m-grid m-grid--hor m-grid--root m-page">
-			<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-grid--tablet-and-mobile m-grid--hor-tablet-and-mobile 		m-login m-login--1 m-login--singin" id="m_login">
+			<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-grid--tablet-and-mobile m-grid--hor-tablet-and-mobile m-login m-login--1 m-login--singin" id="m_login">
 				<div class="m-grid__item m-grid__item--order-tablet-and-mobile-2 m-login__aside">
 					<div class="m-stack m-stack--hor m-stack--desktop">
 						<div class="m-stack__item m-stack__item--fluid">
@@ -44,10 +44,11 @@
 								<div class="m-login__signin">									
 									<form class="m-login__form m-form" action="" method="post">
 										<div class="form-group m-form__group">
-											<input class="form-control m-input" type="text" placeholder="Email" name="email" autocomplete="off" required>
+											<input class="form-control m-input" type="email" placeholder="Email" name="email" autocomplete="off" required>
+											<input class="form-control m-input" type="hidden" value="login" name="_route" autocomplete="off">
 										</div>
 										<div class="form-group m-form__group">
-											<input class="form-control m-input m-login__form-input--last" type="password" placeholder="Password" name="password" required>
+											<input class="form-control m-input m-login__form-input--last" type="password" placeholder="Password" name="pwd" required>
 										</div>
 										<div class="row m-login__form-sub">
 											<div class="col m--align-left">
@@ -76,10 +77,14 @@
 											Sign Up
 										</h3>										
 									</div>
-									<form class="m-login__form m-form" action="">
+									<form class="m-login__form m-form" action="" method="post">
 										<div class="form-group m-form__group">
-											<input class="form-control m-input" type="text" placeholder="Your Name In Full" name="fullname">
+											<input class="form-control m-input" type="text" placeholder="First Name" name="firstname">
+											<input class="form-control m-input" type="hidden" value="signup" name="_route" autocomplete="off">
 										</div>
+										<div class="form-group m-form__group">
+											<input class="form-control m-input" type="text" placeholder="Last Name" name="lastname">
+										</div>										
 										<div class="form-group m-form__group">
 											<input class="form-control m-input" type="text" placeholder="Company Name" name="companyname">
 										</div>											
@@ -90,10 +95,10 @@
 											<input class="form-control m-input" type="text" placeholder="Nature Of Business" name="business" autocomplete="off">
 										</div>
 										<div class="form-group m-form__group">
-											<input class="form-control m-input" type="password" placeholder="Password" name="password">
+											<input class="form-control m-input" type="password" placeholder="Password" name="pwd">
 										</div>
 										<div class="form-group m-form__group">
-											<input class="form-control m-input m-login__form-input--last" type="password" placeholder="Confirm Password" name="rpassword">
+											<input class="form-control m-input m-login__form-input--last" type="password" placeholder="Confirm Password" name="rpwd">
 										</div>
 										<div class="row form-group m-form__group m-login__form-sub">
 											<div class="col m--align-left">
@@ -163,9 +168,9 @@
 							Apene
 						</h3>
 						<p class="m-login__msg">
-							enterprise financial solution designed just
+							Your enterprise financial solution designed just
 							<br>
-							to meet your business requirements
+							to meet your business requirements.
 						</p>
 					</div>
 				</div>

@@ -8,6 +8,7 @@ module.exports = function(app) {
   var receipts = require('../controllers/ReceiptsController');
   var reports = require('../controllers/ReportsController');
   var quotes = require('../controllers/QuotesController');
+  var dashboard = require('../controllers/DashboardController');
 
   global.monthNames = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE",
                     "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
@@ -85,9 +86,13 @@ module.exports = function(app) {
   app.route('/products/:product_id')
     .get(products.get_product);
   
-    // Attendance Report Routes
+    // Report Routes
   app.route('/reports')
     .get(reports.print_attendance);
+
+     // Dashboard Routes
+  app.route('/dashboard')
+  .get(dashboard.loadDashboard);
 
   // Page Not Routes
   //app.route('/404')

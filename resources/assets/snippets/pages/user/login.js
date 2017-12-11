@@ -75,7 +75,7 @@ var SnippetLogin = function() {
                         required: true,
                         email: true
                     },
-                    password: {
+                    pwd: {
                         required: true
                     }
                 }
@@ -109,17 +109,23 @@ var SnippetLogin = function() {
 
             form.validate({
                 rules: {
-                    fullname: {
+                    firstname: {
                         required: true
                     },
+                    lastname: {
+                        required: true
+                    },
+                    companyname: {
+                        required: true
+                    },                    
                     email: {
                         required: true,
                         email: true
                     },
-                    password: {
+                    pwd: {
                         required: true
                     },
-                    rpassword: {
+                    rpwd: {
                         required: true
                     },
                     agree: {
