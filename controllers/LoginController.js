@@ -12,12 +12,16 @@ exports.authenticate = function (req, res) {
     request(auth_url, function (error, response, body) {
       
       var info = JSON.parse(body);
-      console.log(info);
       if (info.length == 1) {
         //prepare display data
         createSession(req, info)
-        console.log("login succeeded");
-        res.render("dashboard");
+        
+        req.session.loggedIn = true;
+        var session = req.session;
+        res.statusMessage = "login successful";
+        res.statusCode = 200;
+        res.url = "/dashboard";
+        res.render("dashboard", {info, session});
         
       } else {
         req.session.message = "Incorrect username or password";
