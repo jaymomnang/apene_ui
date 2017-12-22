@@ -29,14 +29,21 @@ module.exports = function(app) {
     .post(login.authenticate);
 
   // Invoices Routes
-  app.route('/invoices')
-    .get(invoices.list_all_invoices)
+  app.route('/invoice')
+    .get(invoices.load_blank)
     .post(invoices.add_invoice)
     .put(invoices.update_invoice)
     .delete(invoices.delete_invoice);
 
-  app.route('/invoices/:invoice_id')
+  app.route('/invoice/:invoice_id')
     .get(invoices.get_invoice);
+
+   app.route('/invoicelist')
+    .get(invoices.list_all_invoices)
+    .delete(invoices.delete_invoice);
+
+  app.route('/invoicelist/invoice_id')
+    .post(invoices.get_invoice);
 
   // Quotes Routes
   app.route('/quotes')

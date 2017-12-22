@@ -1,6 +1,6 @@
 'use strict';
 
-//load page defaults
+//load all invoices
 exports.list_all_invoices = function(req, res) {
 
   console.log(req.session.email);
@@ -22,6 +22,21 @@ exports.list_all_invoices = function(req, res) {
     });
   }
 };
+
+//load blank invoice
+exports.load_blank = function(req, res) {
+
+  console.log(req.session.email);
+  if (req.session.email == undefined){
+    res.render("login");
+  }
+  else{
+
+    var ui_data = req.session;
+    res.render("invoice", {menus, ui_data});
+  }
+};
+
 
 //post page data
 exports.add_invoice = function(req, res) {

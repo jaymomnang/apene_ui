@@ -21,7 +21,7 @@ exports.authenticate = function (req, res) {
         res.statusMessage = "login successful";
         res.statusCode = 200;
         res.url = "/dashboard";
-        res.render("dashboard", {info, session});
+        res.redirect("dashboard");
         
       } else {
         req.session.message = "Incorrect username or password";
