@@ -5,11 +5,12 @@ var express = require('express'),
     session = require('express-session'),
     routes = require('./routes/appRoutes'),
     assert = require('assert');
+    require("dotenv").config();
 
 global.bodyParser = require('body-parser');
 global.request = require('request');
-global.mc_api = "http://localhost:5000/";
-global.urlpath = "http://localhost:5100/";
+global.mc_api = process.env.API + ':' + process.env.API_PORT;
+global.urlpath = process.env.NS + ':' + process.env.PORT;
 
 
 //initialize bodyParser and errorHandler
