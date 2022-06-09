@@ -6,11 +6,12 @@ var express = require('express'),
     routes = require('./routes/appRoutes'),
     assert = require('assert');
     require("dotenv").config();
+    require("bcrypt");
 
 global.bodyParser = require('body-parser');
 global.request = require('request');
-global.mc_api = process.env.API + ':' + process.env.API_PORT;
-global.urlpath = process.env.NS + ':' + process.env.PORT;
+global.mc_api = process.env.API + ':' + process.env.API_PORT + "/";
+global.urlpath = process.env.NS + ':' + process.env.PORT + "/";
 
 
 //initialize bodyParser and errorHandler
@@ -21,6 +22,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/resources'));
 app.use(bodyParser.json());
 app.use(session({secret: 'as465asdwqwdzcafd56a5df45a46df'}));
+
+
 //app.use(errorHandler);
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false });

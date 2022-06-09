@@ -8,13 +8,13 @@ exports.getCurrentUser = function (req, res) {
 exports.authenticate = function (req, res) {
 
   if (req.body._route == "login") {
-    var auth_url = mc_api + "login/" + req.body.email + "/" + req.body.pwd;
+    var auth_url = mc_api + "people/auth/" + req.body.email + "/" + req.body.pwd;
     request(auth_url, function (error, response, body) {
       
       var info = JSON.parse(body);
-      if (info.length == 1) {
+      if (info.user.length == 1) {
         //prepare display data
-        createSession(req, info)
+        createSession(req, info.user)
         
         req.session.loggedIn = true;
         var session = req.session;
@@ -61,7 +61,7 @@ var createSession = function (req, info) {
   req.session.username = info[0].firstname + " " + info[0].lastname;
   req.session.status = info[0].status;
   req.session.loggedIn = true;
-  req.session.role = info[0].role;
+  req.session.role = info[0].roles;
 
   var d = new Date();
   var y = d.getFullYear();
