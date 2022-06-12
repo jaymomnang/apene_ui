@@ -6,6 +6,10 @@ exports.loadDashboard = function (req, res) {
   var status = req.session.status;
   var loggedIn = req.session.loggedIn;
   var role =  req.session.role;
-  
-  res.render("dashboard",  {username, token, status, loggedIn, role});
+
+  if (loggedIn === undefined || loggedIn === false){ 
+    res.redirect("login");
+  }else{
+    res.render("dashboard",  {username, token, status, loggedIn, role});
+  }  
 };
