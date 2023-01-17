@@ -1,5 +1,5 @@
 'use strict';
-module.exports = function(app) {
+module.exports = function (app) {
   var invoices = require('../controllers/InvoicesController');
   var user = require('../controllers/userController');
   var login = require('../controllers/LoginController');
@@ -11,16 +11,16 @@ module.exports = function(app) {
   var dashboard = require('../controllers/DashboardController');
 
   global.monthNames = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE",
-                    "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
+    "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
 
   global.menus = {
-      'tasks_label': 'My Tasks',
-      'courses_label':'My Courses',
-      'performance_label': 'My Performance',
-      'attendance_label': 'Attendance',
-      'submissions_label': 'My Submissions',
-      'manage_usr_label': 'Manage User',
-      'reports_label':'Reports'
+    'tasks_label': 'My Tasks',
+    'courses_label': 'My Courses',
+    'performance_label': 'My Performance',
+    'attendance_label': 'Attendance',
+    'submissions_label': 'My Submissions',
+    'manage_usr_label': 'Manage User',
+    'reports_label': 'Reports'
   };
 
   // Login Routes
@@ -38,7 +38,7 @@ module.exports = function(app) {
   app.route('/invoice/:invoice_id')
     .get(invoices.get_invoice);
 
-   app.route('/invoicelist')
+  app.route('/invoicelist')
     .get(invoices.list_all_invoices)
     .delete(invoices.delete_invoice);
 
@@ -82,7 +82,7 @@ module.exports = function(app) {
 
   app.route('/customers/:customer_id')
     .get(customers.get_customer);
-  
+
   // Products Routes
   app.route('/products')
     .get(products.list_all_products)
@@ -92,17 +92,17 @@ module.exports = function(app) {
 
   app.route('/products/:product_id')
     .get(products.get_product);
-  
-    // Report Routes
+
+  // Report Routes
   app.route('/reports')
     .get(reports.print_attendance);
 
-     // Dashboard Routes
+  // Dashboard Routes
   app.route('/dashboard')
-  .get(dashboard.loadDashboard);
+    .get(dashboard.loadDashboard);
 
   // Page Not Routes
   //app.route('/404')
-    //.render("404", {'predef': arr});
+  //.render("404", {'predef': arr});
 
 };
