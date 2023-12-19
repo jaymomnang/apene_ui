@@ -1,36 +1,6 @@
 {% set title = 'Invoices' %} {% extends 'views/_layout.html' %} {% block content %}
 
 <div class="m-grid__item m-grid__item--fluid m-wrapper">
-	<!-- BEGIN: Subheader -->
-	<!--
-	<div class="m-subheader ">
-		<div class="d-flex align-items-center">
-			<div class="mr-auto">
-				<h3 class="m-subheader__title m-subheader__title--separator">
-					Invoices
-				</h3>
-				<ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
-					<li class="m-nav__item m-nav__item--home">
-						<a href="#" class="m-nav__link m-nav__link--icon">
-							<i class="m-nav__link-icon la la-home"></i>
-						</a>
-					</li>
-					<li class="m-nav__separator">
-						-
-					</li>
-					<li class="m-nav__item">
-						<a href="" class="m-nav__link">
-							<span class="m-nav__link-text">
-								{{hdr_label}}
-							</span>
-						</a>
-					</li>					
-				</ul>
-			</div>			
-		</div>
-	</div>-->
-	<!-- END: Subheader -->
-
 	<div class="m-content">
 		<div class="row">
 			<div class="col-lg-12">
@@ -75,7 +45,8 @@
 									<label class="">
 										Invoice Number:
 									</label>
-									<input type="text" class="form-control m-input" placeholder="New Invoice" disabled="disabled">
+									<input type="text" class="form-control m-input" placeholder="New Invoice"
+										disabled="disabled">
 								</div>
 							</div>
 							<div class="form-group m-form__group row">
@@ -84,7 +55,8 @@
 										Address:
 									</label>
 									<div class="m-input-icon m-input-icon--right">
-										<input type="text" class="form-control m-input" placeholder="Enter customer address">
+										<input type="text" class="form-control m-input"
+											placeholder="Enter customer address">
 										<span class="m-input-icon__icon m-input-icon__icon--right">
 											<span>
 												<i class="la la-map-marker"></i>
@@ -96,7 +68,8 @@
 									<label class="">
 										Status:
 									</label>
-									<input type="text" class="form-control m-input" placeholder="Pending" disabled="disabled">
+									<input type="text" class="form-control m-input" placeholder="Pending"
+										disabled="disabled">
 								</div>
 							</div>
 							<div class="form-group m-form__group row">
@@ -126,7 +99,8 @@
 								<div class="m-form m-form--label-align-left m--margin-top-20 m--margin-bottom-30">
 									<div class="row align-items-left">
 										<div class="col-xl-4 order-1 order-xl-2 m--align-left">
-											<a href="#" class="btn btn-accent m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
+											<a href="#"
+												class="btn btn-accent m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
 												<span>
 													<i class="la la-cart-plus"></i>
 													<span>
@@ -140,7 +114,7 @@
 								</div>
 								<!--end: Search Form -->
 								<!--begin: Datatable -->
-								<div class="m_datatable" id="local_data"></div>
+								<div class="m_datatable" id="ajax_data"></div>
 								<!--end: Datatable -->
 							</div>
 

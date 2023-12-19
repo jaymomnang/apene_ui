@@ -1325,7 +1325,8 @@ var Dashboard = function() {
                 type: 'remote',
                 source: {
                     read: {
-                        url: 'http://keenthemes.com/metronic/preview/inc/api/datatables/demos/default.php'
+                        //url: 'http://keenthemes.com/metronic/preview/inc/api/datatables/demos/default.php'
+                        url:'http://localhost:5000/people'
                     }
                 },
                 pageSize: 20,
