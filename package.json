@@ -8,6 +8,7 @@
     "start": "nodemon app.js"
   },
   "dependencies": {
+    "apene_ui": "file:",
     "bcrypt": "^5.0.1",
     "dotenv": "^16.0.1",
     "express-session": "^1.17.3",
