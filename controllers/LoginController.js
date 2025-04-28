@@ -35,7 +35,6 @@ exports.authenticate = function (req, res) {
     //prepare attendance data
     console.log("create new user account");
     var data = req.body;
-    console.log(data);
     createUser(req, data);
     res.render("login");
 
@@ -45,10 +44,9 @@ exports.authenticate = function (req, res) {
 
 //create a new user account
 var createUser = function (req, data) {
-  var auth_url = mc_api + "users/";
+  var auth_url = mc_api + data._route + "/";
   request.post({ headers: { 'content-type': 'application/x-www-form-urlencoded' }, url: auth_url, form: data }, function (error, response, body) {
     var data = JSON.parse(body);
-    console.log(data);
     if (data.email != '') {
       req.session.message = "User account created successfully";
     }

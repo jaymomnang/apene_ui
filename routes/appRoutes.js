@@ -56,12 +56,14 @@ module.exports = function (app) {
 
   // Users Routes
   app.route('/manage_usr')
-    .get(user.get_users)
-    .post(user.add_new_user);
+    .get(user.get_users);
 
   app.route('/manage_usr/:email')
     .put(user.update_user_prof)
     .delete(user.delete_user);
+
+  app.route('/signup')
+    .post(user.add_new_user);
 
   // Receipts Routes
   app.route('/receipts')
